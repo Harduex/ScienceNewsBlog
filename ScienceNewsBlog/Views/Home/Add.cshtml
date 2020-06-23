@@ -1,0 +1,36 @@
+﻿@model ScienceNewsBlog.Data.Models.Article
+
+@{
+    ViewData["Title"] = "Add";
+}
+
+<h1>Create new article</h1>
+<h3>@ViewData["Message"]</h3>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-controller="Home" asp-action="Add">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" name="title" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Content" class="control-label"></label>
+                <textarea asp-for="Content" class="form-control" rows="4" cols="50"></textarea>
+            </div>
+            <div class="form-group">
+                <label asp-for="PhotoUrl" class="control-label"></label>
+                <input asp-for="PhotoUrl" name="photoUrl" class="form-control" />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Publish" class="btn btn-success" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Articles" class="btn btn-danger">Back to articles</a>
+</div>
+

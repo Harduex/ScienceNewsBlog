@@ -157,3 +157,6 @@ D:\IT Step\ASP.NET Core\Coure Project\ScienceNewsBlog\ScienceNewsBlog\obj\Debug\
 D:\IT Step\ASP.NET Core\Coure Project\ScienceNewsBlog\ScienceNewsBlog\obj\Debug\netcoreapp3.1\ScienceNewsBlog.MvcApplicationPartsAssemblyInfo.cache
 D:\IT Step\ASP.NET Core\Coure Project\ScienceNewsBlog\ScienceNewsBlog\obj\Debug\netcoreapp3.1\Razor\Views\Home\Articles.cshtml.g.cs
 D:\IT Step\ASP.NET Core\Coure Project\ScienceNewsBlog\ScienceNewsBlog\obj\Debug\netcoreapp3.1\Razor\Views\Home\Contact.cshtml.g.cs
+D:\IT Step\ASP.NET Core\Coure Project\ScienceNewsBlog\ScienceNewsBlog\obj\Debug\netcoreapp3.1\Razor\Views\Home\Edit.cshtml.g.cs
+D:\IT Step\ASP.NET Core\Coure Project\ScienceNewsBlog\ScienceNewsBlog\obj\Debug\netcoreapp3.1\Razor\Views\Home\Add.cshtml.g.cs
+D:\IT Step\ASP.NET Core\Coure Project\ScienceNewsBlog\ScienceNewsBlog\obj\Debug\netcoreapp3.1\Razor\Views\Home\Article.cshtml.g.cs

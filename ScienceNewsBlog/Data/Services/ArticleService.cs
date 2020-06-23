@@ -10,15 +10,46 @@ namespace ScienceNewsBlog.Data.Services
 {
     public class ArticleService : IArticleService
     {
-        private ApplicationDbContext dbContext;
+        private ApplicationDbContext db;
         public ArticleService(ApplicationDbContext dbContext)
         {
-            this.dbContext = dbContext;
+            this.db = dbContext;
+        }
+
+        public void Add(string title, string content, string photoUrl)
+        {
+            db.Articles.Add(new Article { Title = title, Content = content, PhotoUrl = photoUrl });
+            db.SaveChanges();
+        }
+
+        public void Delete(int id)
+        {
+            var article = GetById(id);
+            db.Articles.Remove(article);
+            db.SaveChanges();
+        }
+
+        public void Edit(Article article)
+        {
+            var articleToEdit = db.Articles.FirstOrDefault(x => x.Id == article.Id);
+
+            if(articleToEdit != null)
+            {
+                articleToEdit.Title = article.Title;
+                articleToEdit.Content = article.Content;
+                articleToEdit.PhotoUrl = article.PhotoUrl;
+                db.SaveChanges();
+            }
         }
 
         public IEnumerable<Article> GetAll()
         {
-            return dbContext.Articles.ToList();
+            return db.Articles.ToList();
+        }
+
+        public Article GetById(int id)
+        {
+            return db.Articles.FirstOrDefault(x => x.Id == id);
         }
     }
 }

@@ -10,5 +10,12 @@ namespace ScienceNewsBlog.Data.Services
     {
         IEnumerable<Article> GetAll();
 
+        Article GetById(int id);
+
+        void Edit(Article article);
+
+        void Add(string title, string content, string photoUrl);
+
+        void Delete(int id);
     }
 }
