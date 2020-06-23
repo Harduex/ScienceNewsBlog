@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using ScienceNewsBlog.Data.Models;
 
 namespace ScienceNewsBlog.Data
 {
@@ -12,5 +13,6 @@ namespace ScienceNewsBlog.Data
             : base(options)
         {
         }
+        public DbSet<Article> Articles { get; set; }
     }
 }

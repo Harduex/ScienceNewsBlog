@@ -5,17 +5,18 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using ScienceNewsBlog.Data.Services;
 using ScienceNewsBlog.Models;
 
 namespace ScienceNewsBlog.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly IArticleService articleService;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(IArticleService articleService)
         {
-            _logger = logger;
+            this.articleService = articleService;
         }
 
         public IActionResult Index()
@@ -23,7 +24,14 @@ namespace ScienceNewsBlog.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult Articles()
+        {
+            var articles = articleService.GetAll();
+
+            return View(articles);
+        }
+
+        public IActionResult Contact()
         {
             return View();
         }

@@ -12,6 +12,7 @@ using ScienceNewsBlog.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using ScienceNewsBlog.Data.Services;
 
 namespace ScienceNewsBlog
 {
@@ -42,6 +43,8 @@ namespace ScienceNewsBlog
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
             services.AddRazorPages();
+
+            services.AddTransient<IArticleService, ArticleService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
