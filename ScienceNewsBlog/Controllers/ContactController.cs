@@ -37,7 +37,7 @@ namespace ScienceNewsBlog.Controllers
                     Content = $"Message from: {model.Name}<br>" +
                               $"Email: {model.Email}<br>" +
                               $" Message: {model.Message}<br>",
-                    Subject = "Contact Form - ScienceNewsBlog App"
+                    Subject = "Contact Form - " + model.Name
                 };
 
                 EmailService.Send(msgToSend);
