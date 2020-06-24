@@ -10,6 +10,8 @@ namespace ScienceNewsBlog.Data.Services
     {
         IEnumerable<Article> GetAll();
 
+        IEnumerable<Article> GetFeatured(int n);
+
         Article GetById(int id);
 
         void Edit(Article article);

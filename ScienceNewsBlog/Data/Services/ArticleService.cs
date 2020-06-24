@@ -44,12 +44,22 @@ namespace ScienceNewsBlog.Data.Services
 
         public IEnumerable<Article> GetAll()
         {
-            return db.Articles.ToList();
+            var articles = db.Articles.ToList();
+            articles.Reverse();
+
+            return articles;
         }
 
         public Article GetById(int id)
         {
             return db.Articles.FirstOrDefault(x => x.Id == id);
+        }
+
+        public IEnumerable<Article> GetFeatured(int n)
+        {
+            var featuredArticles = GetAll().Take(n).ToList();
+
+            return featuredArticles;
         }
     }
 }

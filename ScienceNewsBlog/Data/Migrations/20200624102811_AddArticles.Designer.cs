@@ -10,7 +10,7 @@ using ScienceNewsBlog.Data;
 namespace ScienceNewsBlog.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200623173220_AddArticles")]
+    [Migration("20200624102811_AddArticles")]
     partial class AddArticles
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -230,6 +230,9 @@ namespace ScienceNewsBlog.Data.Migrations
 
                     b.Property<string>("Content")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("PhotoUrl")
                         .HasColumnType("nvarchar(max)");

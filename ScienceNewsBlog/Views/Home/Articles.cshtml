@@ -17,24 +17,25 @@
         @foreach (var item in Model)
         {
             <div class="col">
-                <div class="card" style="width: 18rem;">
+                <div class="card" style="width: 18rem; height: 500px;">
                     <img src="@item.PhotoUrl" class="card-img-top" alt="...">
-                    <div class="card-body">
+                    <div class="card-body d-flex flex-column">
                         <h5 class="card-title">@item.Title</h5>
                         <p class="card-text">
                             @(item.Content.Length > 100 ? (item.Content.Substring(0, 100))+"..." : item.Content)
                         </p>
-                        <a asp-action="Article" asp-route-id="@item.Id" class="btn btn-primary">Go to article</a>
 
-                        @if (this.User.IsInRole("admin"))
-                        {
-                            <br />
-                            <br />
-                            <a class="btn btn-outline-primary" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                        <div class="mt-auto">
+                            @if (this.User.IsInRole("admin"))
+                            {
+                                <a class="btn btn-outline-primary" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
 
-                            <a onclick="getArticleToDelete('@item.Id', '@item.Title')" class="btn btn-outline-danger" asp-action="Delete" asp-route-id="@item.Id" data-toggle="modal" data-target="#exampleModal">Delete</a>
+                                <a onclick="getArticleToDelete('@item.Id', '@item.Title')" class="btn btn-outline-danger" asp-action="Delete" asp-route-id="@item.Id" data-toggle="modal" data-target="#exampleModal">Delete</a>
 
-                        }
+                            }
+                            <a asp-action="Article" asp-route-id="@item.Id" class="btn btn-primary">Read more</a>
+                        </div>
+
                     </div>
                 </div>
                 <br />

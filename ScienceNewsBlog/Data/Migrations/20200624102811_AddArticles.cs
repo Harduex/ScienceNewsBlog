@@ -1,5 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
+using System;
+
 namespace ScienceNewsBlog.Data.Migrations
 {
     public partial class AddArticles : Migration
@@ -14,7 +16,8 @@ namespace ScienceNewsBlog.Data.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Title = table.Column<string>(nullable: true),
                     Content = table.Column<string>(nullable: true),
-                    PhotoUrl = table.Column<string>(nullable: true)
+                    PhotoUrl = table.Column<string>(nullable: true),
+                    CreatedDate = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {

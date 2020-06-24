@@ -24,7 +24,9 @@ namespace ScienceNewsBlog.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            var articles = articleService.GetFeatured(3);
+
+            return View(articles);
         }
 
         public IActionResult Articles()

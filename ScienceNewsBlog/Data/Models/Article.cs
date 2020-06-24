@@ -9,6 +9,11 @@ namespace ScienceNewsBlog.Data.Models
 {
     public class Article
     {
+        public Article()
+        {
+            this.CreatedDate = DateTime.UtcNow;
+        }
+
         public int Id { get; set; }
 
         [DisplayName("Title: ")]
@@ -19,7 +24,6 @@ namespace ScienceNewsBlog.Data.Models
 
         [DisplayName("Photo Url: ")]
         public string PhotoUrl { get; set; }
-
-
+        public DateTime CreatedDate { get; set; }
     }
 }
