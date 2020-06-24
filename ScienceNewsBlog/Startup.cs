@@ -13,6 +13,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using ScienceNewsBlog.Data.Services;
+using ScienceNewsBlog.Models;
+using ScienceNewsBlog.Services;
 
 namespace ScienceNewsBlog
 {
@@ -45,6 +47,24 @@ namespace ScienceNewsBlog
             services.AddRazorPages();
 
             services.AddTransient<IArticleService, ArticleService>();
+
+            EmailServerConfiguration config = new EmailServerConfiguration
+            {
+                SmtpPassword = "PassWord1234",
+                SmtpServer = "smtp.gmail.com",
+                SmtpUsername = "sciencenewsblogbg@gmail.com"
+            };
+
+            EmailAddress FromEmailAddress = new EmailAddress
+            {
+                Address = "sciencenewsblogbg@gmail.com",
+                Name = "User"
+            };
+
+            services.AddSingleton<EmailServerConfiguration>(config);
+            services.AddTransient<IEmailService, MailKitEmailService>();
+            services.AddSingleton<EmailAddress>(FromEmailAddress);
+            services.AddMvc();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
