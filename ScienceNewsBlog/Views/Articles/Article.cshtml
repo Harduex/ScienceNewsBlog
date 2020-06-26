@@ -53,20 +53,3 @@
         </div>
     </div>
 </div>
-
-<script>
-    function deleteArticle() {
-        var $id = $('#articleToDeleteId').html();
-
-        window.location = "/Articles/Delete/" + $id;
-    }
-
-    function getArticleToDelete(id, title) {
-
-        var $title = $('#articleToDeleteTitle');
-        var $id = $('#articleToDeleteId');
-
-        $title.html(title);
-        $id.html(id);
-    }
-</script>

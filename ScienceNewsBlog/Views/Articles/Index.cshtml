@@ -13,41 +13,16 @@
             <a class="btn btn-success" asp-controller="Articles" asp-action="Add">Create New Article</a>
         </p>
     }
-    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4">
-        @foreach (var item in Model)
-        {
-            <div class="col">
-                <div class="card" style="width: 18rem; height: 600px;">
-                    <img src="@item.PhotoUrl" class="card-img-top" alt="...">
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title">@item.Title</h5>
-                        <p class="card-text text-muted">
-                            @item.CreatedDate
-                        </p>
-                        <p class="card-text">
-                            @Html.Raw(item.Content.Length > 100 ? (item.Content.Substring(0, 100)) + "..." : item.Content)
-                        </p>
-
-                        <div class="mt-auto">
-                            <a asp-action="Article" asp-route-id="@item.Id" class="btn btn-primary">Read more</a>
-                            @if (this.User.IsInRole("admin"))
-                            {
-                                <a class="btn btn-outline-primary" asp-controller="Articles" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
-
-                                <a onclick="getArticleToDelete('@item.Id', '@item.Title')" class="btn btn-outline-danger" asp-action="Delete" asp-route-id="@item.Id" data-toggle="modal" data-target="#exampleModal">Delete</a>
-
-                            }
-                        </div>
-
-                    </div>
-                </div>
-                <br />
-            </div>
-
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4" id="articles">
+        @{
+            foreach (var item in Model)
+            {
+                <partial name="_ArticlePartial" model="item" />
+            }
         }
     </div>
-
 </div>
+
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -72,7 +47,6 @@
 </div>
 
 <script>
-
     function deleteArticle() {
         var $id = $('#articleToDeleteId').html();
 
