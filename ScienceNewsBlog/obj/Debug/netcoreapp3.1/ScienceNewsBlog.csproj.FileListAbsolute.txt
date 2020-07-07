@@ -162,7 +162,6 @@ D:\IT Step\ASP.NET Core\Coure Project\ScienceNewsBlog\ScienceNewsBlog\obj\Debug\
 D:\IT Step\ASP.NET Core\Coure Project\ScienceNewsBlog\ScienceNewsBlog\obj\Debug\netcoreapp3.1\Razor\Views\Articles\Edit.cshtml.g.cs
 D:\IT Step\ASP.NET Core\Coure Project\ScienceNewsBlog\ScienceNewsBlog\obj\Debug\netcoreapp3.1\Razor\Views\Articles\Index.cshtml.g.cs
 D:\IT Step\ASP.NET Core\Coure Project\ScienceNewsBlog\ScienceNewsBlog\obj\Debug\netcoreapp3.1\Razor\Views\Contact\ThankYou.cshtml.g.cs
-D:\IT Step\ASP.NET Core\Coure Project\ScienceNewsBlog\ScienceNewsBlog\obj\Debug\netcoreapp3.1\Razor\Views\Articles\_ArticlePartial.cshtml.g.cs
 D:\IT Step\ASP.NET Core\Coure Project\ScienceNewsBlog\ScienceNewsBlog\bin\Debug\netcoreapp3.1\Microsoft.Data.Sqlite.dll
 D:\IT Step\ASP.NET Core\Coure Project\ScienceNewsBlog\ScienceNewsBlog\bin\Debug\netcoreapp3.1\Microsoft.DotNet.PlatformAbstractions.dll
 D:\IT Step\ASP.NET Core\Coure Project\ScienceNewsBlog\ScienceNewsBlog\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Sqlite.dll
@@ -187,3 +186,4 @@ D:\IT Step\ASP.NET Core\Coure Project\ScienceNewsBlog\ScienceNewsBlog\bin\Debug\
 D:\IT Step\ASP.NET Core\Coure Project\ScienceNewsBlog\ScienceNewsBlog\obj\Debug\netcoreapp3.1\ScienceNewsBlog.csproj.CoreCompileInputs.cache
 D:\IT Step\ASP.NET Core\Coure Project\ScienceNewsBlog\ScienceNewsBlog\obj\Debug\netcoreapp3.1\ScienceNewsBlog.MvcApplicationPartsAssemblyInfo.cs
 D:\IT Step\ASP.NET Core\Coure Project\ScienceNewsBlog\ScienceNewsBlog\obj\Debug\netcoreapp3.1\ScienceNewsBlog.MvcApplicationPartsAssemblyInfo.cache
+D:\IT Step\ASP.NET Core\Coure Project\ScienceNewsBlog\ScienceNewsBlog\obj\Debug\netcoreapp3.1\Razor\Views\Home\About.cshtml.g.cs

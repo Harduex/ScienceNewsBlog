@@ -1,11 +1,8 @@
-﻿@model List<ScienceNewsBlog.Data.Models.Article>
-
-@{
+﻿@{
     ViewData["Title"] = "Articles";
 }
-
 <h1>Articles</h1>
-<br />
+<hr />
 <div class="container">
     @if (this.User.IsInRole("admin"))
     {
@@ -13,18 +10,15 @@
             <a class="btn btn-success" asp-controller="Articles" asp-action="Add">Create New Article</a>
         </p>
     }
-    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4" id="articles">
-        @{
-            foreach (var item in Model)
-            {
-                <partial name="_ArticlePartial" model="item" />
-            }
-        }
-    </div>
+    else
+    {
+        <br />
+        <br />
+        <br />
+    }
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4" id="articles"></div>
 </div>
 
-
-<!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -47,6 +41,75 @@
 </div>
 
 <script>
+
+    var i = 0;
+
+    $(document).ready(function () {
+        for (var i = 0; i < 3; i++) {
+            getArticles();
+        }
+        $(window).scroll(function () {
+            if ($(window).scrollTop() == $(document).height() - $(window).height()) {
+                for (var i = 0; i < 3; i++) {
+                    getArticles();
+                }
+            }
+        });
+    });
+
+    var getArticles = () => {
+        fetch("api/ArticlesApi")
+            .then(data => data.json())
+            .then((data) => {
+                if (i !== data.length) {
+
+                    data.reverse();
+
+                    var title = JSON.stringify(data[i].title);
+                    title = title.substring(1, title.length - 1);
+
+                    var date = JSON.stringify(data[i].createdDate);
+                    date = date.substring(1, date.length - 1);
+
+                    var content = JSON.stringify(data[i].content).substring(0, 50);
+                    content = content.substring(1, content.length - 1) + '...';
+
+                    var photoUrl = JSON.stringify(data[i].photoUrl);
+                    photoUrl = photoUrl.substring(1, photoUrl.length - 1);
+
+                    var id = JSON.stringify(data[i].id);
+                    
+                    $('#articles').append(
+                        `
+                        <div class="col">
+                            <div class="card" style="width: 18rem; height: 600px;">
+                                 <img src="${photoUrl}" class="card-img-top" alt="...">
+                                    <div class="card-body d-flex flex-column">
+                                        <h5 class="card-title" id="title">${title}</h5>
+                                        <p id="date" class="card-text text-muted">${date}</p>
+                                        <p id="content" class="card-text">${content}</p>
+                                        <div class="mt-auto">
+                                            <a href="/Articles/Article/${id}" class="btn btn-primary">Read more</a>
+                                            @if (this.User.IsInRole("admin"))
+                                            {
+                                                <a class="btn btn-outline-primary" href="Articles/Edit/${id}">Edit</a>
+                                                <a onclick="getArticleToDelete('${id}', '${title}')" class="btn btn-outline-danger" 
+                                                    asp-action="Delete" asp-route-id="${id}" data-toggle="modal" 
+                                                    data-target="#exampleModal">Delete
+                                                </a>
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                                <br />
+                            </div>
+                            `
+                        );
+                    i++;
+                }
+            });
+    }
+
     function deleteArticle() {
         var $id = $('#articleToDeleteId').html();
 
