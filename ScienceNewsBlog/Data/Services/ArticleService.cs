@@ -16,9 +16,9 @@ namespace ScienceNewsBlog.Data.Services
             this.db = dbContext;
         }
 
-        public void Add(string title, string content, string photoUrl)
+        public void Add(string title, string content, string picture)
         {
-            db.Articles.Add(new Article { Title = title, Content = content, PhotoUrl = photoUrl });
+            db.Articles.Add(new Article { Title = title, Content = content, Picture = picture });
             db.SaveChanges();
         }
 
@@ -37,7 +37,7 @@ namespace ScienceNewsBlog.Data.Services
             {
                 articleToEdit.Title = article.Title;
                 articleToEdit.Content = article.Content;
-                articleToEdit.PhotoUrl = article.PhotoUrl;
+                articleToEdit.Picture = article.Picture;
                 db.SaveChanges();
             }
         }

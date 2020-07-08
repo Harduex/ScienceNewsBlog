@@ -1,2 +1,2 @@
 # ScienceNewsBlog
-Asp.net core course project 
+Asp.net core course project

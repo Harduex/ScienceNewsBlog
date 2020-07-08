@@ -9,15 +9,15 @@
 <hr />
 <div class="row">
     <div class="col">
-        <form asp-controller="Articles" asp-action="Add">
+        <form asp-controller="Articles" asp-action="Add" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Title" class="control-label"></label>
                 <input asp-for="Title" name="title" class="form-control" />
             </div>
             <div class="form-group">
-                <label asp-for="PhotoUrl" class="control-label"></label>
-                <input asp-for="PhotoUrl" name="photoUrl" class="form-control" />
+                <label asp-for="Picture" class="control-label"></label><br />
+                <input asp-for="NewPicture" />
             </div>
             <div class="form-group">
                 <label asp-for="Content" class="control-label"></label>

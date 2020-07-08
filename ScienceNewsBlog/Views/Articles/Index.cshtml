@@ -74,16 +74,16 @@
                     var content = JSON.stringify(data[i].content).substring(0, 50);
                     content = content.substring(1, content.length - 1) + '...';
 
-                    var photoUrl = JSON.stringify(data[i].photoUrl);
-                    photoUrl = photoUrl.substring(1, photoUrl.length - 1);
+                    var pictureBase64 = JSON.stringify(data[i].picture);
+                    pictureBase64 = pictureBase64.substring(1, pictureBase64.length - 1);
 
                     var id = JSON.stringify(data[i].id);
-                    
+
                     $('#articles').append(
                         `
                         <div class="col">
                             <div class="card" style="width: 18rem; height: 600px;">
-                                 <img src="${photoUrl}" class="card-img-top" alt="...">
+                                 <img src='data:image/jpeg;base64, ${pictureBase64}' class="card-img-top" alt="image">
                                     <div class="card-body d-flex flex-column">
                                         <h5 class="card-title" id="title">${title}</h5>
                                         <p id="date" class="card-text text-muted">${date}</p>
@@ -93,8 +93,8 @@
                                             @if (this.User.IsInRole("admin"))
                                             {
                                                 <a class="btn btn-outline-primary" href="Articles/Edit/${id}">Edit</a>
-                                                <a onclick="getArticleToDelete('${id}', '${title}')" class="btn btn-outline-danger" 
-                                                    asp-action="Delete" asp-route-id="${id}" data-toggle="modal" 
+                                                <a onclick="getArticleToDelete('${id}', '${title}')" class="btn btn-outline-danger"
+                                                    asp-action="Delete" asp-route-id="${id}" data-toggle="modal"
                                                     data-target="#exampleModal">Delete
                                                 </a>
                                             }

@@ -16,7 +16,7 @@ namespace ScienceNewsBlog.Data.Services
 
         void Edit(Article article);
 
-        void Add(string title, string content, string photoUrl);
+        void Add(string title, string content, string picture);
 
         void Delete(int id);
     }

@@ -10,7 +10,7 @@
 <hr />
 <div class="row">
     <div class="col">
-        <form asp-controller="Articles" asp-action="SaveEdit">
+        <form asp-controller="Articles" asp-action="SaveEdit" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
             <div class="form-group">
@@ -19,9 +19,11 @@
                 <span asp-validation-for="Title" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="PhotoUrl" class="control-label"></label>
-                <input asp-for="PhotoUrl" class="form-control" />
-                <span asp-validation-for="PhotoUrl" class="text-danger"></span>
+                <div class="card" style="width: 18rem;">
+                    <img src='data:image/jpeg;base64, @Model.Picture' class="card-img-top" alt="image">
+                </div>
+                <label asp-for="Picture" class="control-label"></label><br />
+                <input asp-for="NewPicture" />
             </div>
             <div class="form-group">
                 <label asp-for="Content" class="control-label"></label>
@@ -29,8 +31,8 @@
                 <span asp-validation-for="Content" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-success" />
-                <a asp-controller="Articles" asp-action="Index" class="btn btn-danger">Back to articles</a>
+                <input type="submit" value="Apply" class="btn btn-success" />
+                <a asp-controller="Articles" asp-action="Index" class="btn btn-primary">Back to articles</a>
             </div>
         </form>
     </div>

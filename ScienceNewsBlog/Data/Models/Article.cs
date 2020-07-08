@@ -24,10 +24,14 @@ namespace ScienceNewsBlog.Data.Models
         [DisplayName("Content: ")]
         public string Content { get; set; }
 
-        [DisplayName("Photo Url: ")]
-        public string PhotoUrl { get; set; }
+        [NotMapped]
+        public IFormFile NewPicture { get; set; }
+
+        [DisplayName("Picture: ")]
+        public string Picture { get; set; }
 
         public DateTime CreatedDate { get; set; }
+
 
     }
 }

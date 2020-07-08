@@ -1,5 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
+using System.IO;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ScienceNewsBlog.Data.Models;
 using ScienceNewsBlog.Data.Services;
@@ -39,11 +43,30 @@ namespace ScienceNewsBlog.Controllers
 
         [HttpPost]
         [Authorize(Roles = "admin")]
-        public IActionResult SaveEdit(Article article)
+        public async Task<IActionResult> SaveEdit(Article article)
         {
-            articleService.Edit(article);
+            var oldArticle = articleService.GetById(article.Id);
+            var obj = article;
+            var file = article.NewPicture;
 
-            return RedirectToAction("Index");
+            if (file != null)
+            {
+                using (var ms = new MemoryStream())
+                {
+                    file.CopyTo(ms);
+                    var fileBytes = ms.ToArray();
+                    string str = Convert.ToBase64String(fileBytes);
+                    obj.Picture = str;
+                }
+            } 
+            else
+            {
+                obj.Picture = oldArticle.Picture;
+            }
+
+            await Task.Run(() => articleService.Edit(obj));
+
+            return RedirectToAction("Edit", new { id = oldArticle.Id });
         }
 
         [HttpGet]
@@ -54,18 +77,30 @@ namespace ScienceNewsBlog.Controllers
         }
 
         [Authorize(Roles = "admin")]
-        public IActionResult Add([Required]string title, [Required]string content, [Required]string photoUrl)
+        public async Task<IActionResult> Add(Article article)
         {
-            if (ModelState.IsValid)
+            var title = article.Title;
+            var content = article.Content;
+
+            var file = article.NewPicture;
+            string str;
+
+            if (file != null)
             {
-                articleService.Add(title, content, photoUrl);
-                return RedirectToAction("Index");
-            }
-            else
+                using (var ms = new MemoryStream())
+                {
+                    file.CopyTo(ms);
+                    var fileBytes = ms.ToArray();
+                    str = Convert.ToBase64String(fileBytes);
+                }
+            } else
             {
-                ViewData["Message"] = "Fields can't be empty!";
+                str = "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8Xw8AAoMBgDTD2qgAAAAASUVORK5CYII=";
             }
-            return View();
+            await Task.Run(() => articleService.Add(title, content, str));
+
+            return RedirectToAction("Index");
+
         }
 
         [Authorize(Roles = "admin")]
